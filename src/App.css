@@ -1,0 +1,32 @@
+/* .App{
+    background-image: url(Images/background.jpg);
+    height:100%
+    
+} */
+
+.App{
+ 
+    width: 100%;
+    padding:10px;
+    display: flex;
+    overflow: hidden;
+    position: absolute;
+    
+}
+.Books{
+    max-width: 70%;
+    flex: 70%;
+    
+}
+.whishlist{
+    max-width: 20%;
+    min-height: 50%;
+    flex:40%;
+    border: 1px solid black;
+}
+
+.Books:after {
+    content: "";
+    display: table;
+    clear: both;
+  }

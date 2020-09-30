@@ -1,0 +1,44 @@
+.Search{
+    padding: 10px;
+    font-size: 30px;
+    text-align: center;
+    box-sizing: border-box;
+    width: 100%;
+    
+    display: inline-block;
+    /* background-color: gray; */
+    
+    
+}
+form{
+    width:100%;
+}
+.Search button{
+    color: black;
+    background-color: lightsalmon;
+    border: 2px solid gray;
+    height: 31px;
+    width: 80px;
+}
+.Search select{
+    margin: 10px;
+    width: 100px;
+    height: 31px;
+    border: 2px solid gray;
+}
+.Search input{
+    border: 1px solid gray;
+    width: 50%;
+    height: 25px;
+    border: 2px solid gray;
+}
+.Search input, button, select:focus{
+    outline: none;
+    background-color: lightgrey;
+
+}
+@media (max-width:599px){
+    .Search{
+   padding: 0px;
+    }
+}
