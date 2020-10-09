@@ -53,21 +53,29 @@ Addwhishlist = (id) =>{
     }
     render(){
 console.log(this.props.booksearched)
-    let booksavailability = this.props.error ? <p style={{ color: "red", textAlign: "center", fontSize: "30px"}}>Books are not available...</p>: null;
-    if(this.props.booksearched){
+    let booksavailability =<p style={{ color: "red", textAlign: "center", fontSize: "30px"}}>Provide Book title...</p>
+   console.log(this.props.booksearched)
+    if(this.props.booksearched.length !== 0){
         booksavailability = (
-            <Bookfilter pagination={this.state.pagination} searching={this.props.searching} isAuth={this.props.isAuth} OrderBooks={this.OrderBooks}   id = {this.props.id} show = {this.state.info} 
+            <Bookfilter pagination={this.state.pagination} searching={this.props.searching} isAuth={this.props.isAuth}  id = {this.props.id} 
               
             books = {this.props.booksearched} type={this.state.filter} Addwhishlist={this.Addwhishlist} information ={this.bookInfoHandler}/> 
         
         );
-}
+    }else{
+        console.log(this.props.error)
+        if(this.props.error)
+        booksavailability = <p > Books are not available</p>
+    }
+// }else{
+//     booksavailability=  <p> No Books are available</p>
+// }
         return(
            
             <Aux>
                 <div className="Books">
                <Booksearch submit={this.submit} handlesearch = {this.searchHandler}  />
-               
+             
                 {booksavailability}
                
                 </div>
@@ -85,7 +93,7 @@ const mapStatetoProps = state =>{
        error: state.books.error,
         bookselected:state.books.bookselected,
         id: state.books.id,
-         searching: state.books.searching,
+        //  searching: state.books.searching,
          booksearched: state.books.booksearched
     };
 }

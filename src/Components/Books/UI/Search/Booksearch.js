@@ -10,7 +10,7 @@ const Booksearch = (props) =>{
         <div className = "Search">
             <input onChange={props.handlesearch} className="user-input" type="text" value={props.searchfield}
            
-            placeholder="Book Book Title" />
+            placeholder="Book Title" />
         {/* <button type="submit" onClick = {props.searchBook} > Search </button> */}
            
         </div>

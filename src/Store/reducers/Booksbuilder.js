@@ -30,17 +30,19 @@ const reducer = (state= initialState, action ) =>{
     })
   }
    if(action.type === actionTypes.SEARCH_VALUE){
-     console.log(state.books)
-     console.log(action.searchval)
-     console.log(action.searchval.trim().length)
      if(action.searchval === null || action.searchval.length == 0 || action.searchval.trim().length == 0)
      {
-       state.booksearched = null
+       state.booksearched = []
+     }
+     let bookavailable = state.books.filter(book => book.volumeInfo.title.includes(action.searchval) && action.searchval != null && action.searchval.trim().length > 0)
+     if(bookavailable.length ===0){
+       state.error = true
+     }if(action.searchval.length ==0){
+       state.error = false
      }
    
     return updateObject(state,{ searchfield: action.searchval,
-      error:false,
-     booksearched: state.books.filter(book => book.volumeInfo.title.includes(action.searchval) && action.searchval != null && action.searchval.trim().length > 0) 
+     booksearched: bookavailable
     } )
 
  };
@@ -48,6 +50,8 @@ if(action.type === actionTypes.SET_BOOKS){
     return {
         ...state,
         books: action.books,
+        booksearched:[],
+        error:false
       
     }
 };
@@ -58,11 +62,11 @@ if(action.type === actionTypes.SEARCH_ERROR){
     }
 };
 
-if(action.type === actionTypes.ORDERED_BOOKS){
- return updateObject(state,{
+// if(action.type === actionTypes.ORDERED_BOOKS){
+//  return updateObject(state,{
  
-   searching: true} )
-}
+//    searching: true} )
+// }
 
 return state;
 };
